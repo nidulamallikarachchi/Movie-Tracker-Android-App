@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "989464759162",
+    "project_id": "movie-tracker-eb402",
+    "storage_bucket": "movie-tracker-eb402.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:989464759162:android:ef8a31d71458cd383f24c3",
+        "android_client_info": {
+          "package_name": "com.example.movietracker"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7vTG0FOc-mOpM5DsTz_fa3FQF6ng9NsM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
