@@ -18,4 +18,14 @@
         app:layout_constraintRight_toRightOf="parent"
         android:orientation="vertical" />
 
+    <Button
+        android:id="@+id/watchlistButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Go to Watchlist"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

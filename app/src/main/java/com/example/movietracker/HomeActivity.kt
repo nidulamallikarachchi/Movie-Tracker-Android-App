@@ -1,10 +1,13 @@
 package com.example.movietracker
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.movietracker.activities.WatchListActivity
 import com.example.movietracker.adapters.MovieAdapter
 import com.example.movietracker.network.RetrofitInstance
 import kotlinx.coroutines.CoroutineScope
@@ -25,6 +28,12 @@ class HomeActivity : AppCompatActivity() {
         movieRecyclerView.layoutManager = GridLayoutManager(this, 2)
 
         fetchPopularMovies()
+
+        val watchlistButton: Button = findViewById(R.id.watchlistButton)
+        watchlistButton.setOnClickListener {
+            val intent = Intent(this, WatchListActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun fetchPopularMovies() {
