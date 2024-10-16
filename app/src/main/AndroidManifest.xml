@@ -13,6 +13,12 @@
         android:theme="@style/Theme.MovieTracker"
         tools:targetApi="31">
         <activity
+            android:name=".activities.MovieDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.WatchedMoviesActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.WatchListActivity"
             android:exported="false" />
         <activity

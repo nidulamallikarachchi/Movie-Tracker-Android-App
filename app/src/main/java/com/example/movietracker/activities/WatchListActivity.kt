@@ -1,7 +1,9 @@
 package com.example.movietracker.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -31,6 +33,13 @@ class WatchListActivity : AppCompatActivity() {
 
         // Load the watchlist data
         loadWatchlist()
+
+        val watchedMoviesButton: Button = findViewById(R.id.watchedMoviesButton)
+        watchedMoviesButton.setOnClickListener {
+            val intent = Intent(this, WatchedMoviesActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 
 
