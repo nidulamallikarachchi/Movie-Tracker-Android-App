@@ -12,4 +12,9 @@ object RetrofitInstance {
             .build()
             .create(TMDBApiService::class.java)
     }
+
+//    Retrofit.Builder() creates a Retrofit instance.
+//    .baseUrl(BASE_URL) defines the base URL for all API requests.
+//    .addConverterFactory(GsonConverterFactory.create()) tells Retrofit to convert JSON responses into Kotlin objects using the Gson library.
+//    .create(TMDBApiService::class.java) links Retrofit with the interface (which we'll create next) that defines the API endpoints.
 }

@@ -17,4 +17,11 @@ interface TMDBApiService {
         @Query("api_key") apiKey: String,
         @Query("query") query: String
     ): Response<MovieResponse>
+
+//    @GET("movie/popular"): This specifies that we’re making a GET request to the /movie/popular endpoint to fetch popular movies.
+//    suspend fun getPopularMovies(...): Since Retrofit supports coroutines, we use suspend functions to fetch data asynchronously.
+//    @Query("api_key"): We pass the TMDB API key as a query parameter.
+//    @Query("page"): This is used for pagination in the popular movies API.
+//    searchMovies: This endpoint allows searching for movies by title.
+
 }
