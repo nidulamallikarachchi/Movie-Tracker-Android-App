@@ -19,33 +19,33 @@ class DisplayUserProfileActivity : AppCompatActivity() {
     private lateinit var textFirstName: TextView
     private lateinit var textUsername: TextView
     private lateinit var textAboutMe: TextView
+    private lateinit var textMoviePreferences: TextView
+    private val userId = "user123" // Replace with actual user ID passed from the previous activity
+
     private lateinit var buttonEditProfile: Button
-    private val defaultUserId = "user123" // Default user ID if none is passed
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_display_user_profile)
 
-        // Initialize Firestore
         firestore = FirebaseFirestore.getInstance()
 
-        // Initialize Views
         profileImage = findViewById(R.id.imageViewProfile)
         textFirstName = findViewById(R.id.textFirstName)
         textUsername = findViewById(R.id.textUsername)
         textAboutMe = findViewById(R.id.textAboutMe)
+        textMoviePreferences = findViewById(R.id.textMoviePreferences) // Add this line to link your TextView
         buttonEditProfile = findViewById(R.id.buttonEditProfile)
 
-        // Get user ID from the intent or use default
-        val userIdFromIntent = intent.getStringExtra("USER_ID") ?: defaultUserId
+        // Get user ID from the intent
+        val userIdFromIntent = intent.getStringExtra("USER_ID") ?: userId
 
         // Load the user profile
         loadUserProfile(userIdFromIntent)
 
-        // Set up the button click listener to navigate to EditUserProfileActivity
         buttonEditProfile.setOnClickListener {
             val intent = Intent(this, EditUserProfileActivity::class.java)
-            intent.putExtra("USER_ID", userIdFromIntent) // Pass user ID to the edit activity
+            intent.putExtra("USER_ID", userIdFromIntent) // Pass user ID to edit activity
             startActivity(intent)
         }
     }
@@ -66,6 +66,8 @@ class DisplayUserProfileActivity : AppCompatActivity() {
                     } else {
                         profileImage.setImageResource(R.drawable.placeholder_image) // Set a placeholder image
                     }
+                    // Display movie preferences
+                    textMoviePreferences.text = it.moviePreferences.joinToString(", ") // Display preferences as a comma-separated string
                 }
             } else {
                 Log.d("DisplayUserProfileActivity", "No such document")

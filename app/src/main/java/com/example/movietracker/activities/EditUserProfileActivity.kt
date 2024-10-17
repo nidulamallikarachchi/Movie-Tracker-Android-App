@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.movietracker.R
 import com.example.movietracker.models.UserProfile
@@ -25,13 +26,15 @@ class EditUserProfileActivity : AppCompatActivity() {
     private lateinit var editUsername: EditText
     private lateinit var editAboutMe: EditText
     private lateinit var buttonSaveProfile: Button
+    private lateinit var buttonSelectPreferences: Button
     private val userId = "user123" // Replace with actual user ID passed from the DisplayUserProfileActivity
 
-    private lateinit var buttonUploadProfilePic: Button
     private lateinit var storageReference: StorageReference
     private var profilePicUrl: String = ""  // Variable to hold the uploaded image URI
 
+    private var moviePreferences: MutableList<String> = mutableListOf()
     private val PICK_IMAGE_REQUEST = 1
+    private val allMoviePreferences = arrayOf("Action", "Comedy", "Drama", "Horror", "Sci-Fi", "Romance")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,13 +46,13 @@ class EditUserProfileActivity : AppCompatActivity() {
         editUsername = findViewById(R.id.editUsername)
         editAboutMe = findViewById(R.id.editAboutMe)
         buttonSaveProfile = findViewById(R.id.buttonSaveProfile)
+        buttonSelectPreferences = findViewById(R.id.buttonSelectPreferences)
 
         profileImage = findViewById(R.id.imageViewProfile)
-        buttonUploadProfilePic = findViewById(R.id.buttonUploadProfilePic)
         storageReference = FirebaseStorage.getInstance().reference.child("profilePictures")
 
-        buttonUploadProfilePic.setOnClickListener {
-            openGallery()
+        buttonSelectPreferences.setOnClickListener {
+            showMoviePreferencesDialog()
         }
 
         // Load the user profile if it exists
@@ -59,6 +62,24 @@ class EditUserProfileActivity : AppCompatActivity() {
         buttonSaveProfile.setOnClickListener {
             saveUserProfile()
         }
+    }
+
+    private fun showMoviePreferencesDialog() {
+        val checkedItems = BooleanArray(allMoviePreferences.size) { false }
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Select Movie Preferences")
+        builder.setMultiChoiceItems(allMoviePreferences, checkedItems) { _, which, isChecked ->
+            if (isChecked) {
+                moviePreferences.add(allMoviePreferences[which])
+            } else {
+                moviePreferences.remove(allMoviePreferences[which])
+            }
+        }
+        builder.setPositiveButton("OK") { _, _ ->
+            // You can show selected preferences or handle further logic if needed
+        }
+        builder.setNegativeButton("Cancel", null)
+        builder.show()
     }
 
     private fun openGallery() {
@@ -86,6 +107,7 @@ class EditUserProfileActivity : AppCompatActivity() {
                     editUsername.setText(it.username)
                     editAboutMe.setText(it.aboutMe)
                     profilePicUrl = it.profilePicUrl // Retrieve the profile picture URL
+                    moviePreferences = it.moviePreferences.toMutableList() // Load movie preferences
                     // Load the profile picture into ImageView using Picasso
                     Picasso.get().load(profilePicUrl).into(profileImage)
                 }
@@ -104,7 +126,7 @@ class EditUserProfileActivity : AppCompatActivity() {
             username = editUsername.text.toString(),
             aboutMe = editAboutMe.text.toString(),
             profilePicUrl = profilePicUrl, // Update with the actual profile picture URL
-            moviePreferences = listOf() // Replace with actual preferences logic
+            moviePreferences = moviePreferences // Update with the selected movie preferences
         )
 
         val userProfileRef = firestore.collection("userProfiles").document(userId)

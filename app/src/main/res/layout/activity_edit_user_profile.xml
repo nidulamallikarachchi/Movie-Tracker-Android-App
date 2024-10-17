@@ -48,6 +48,13 @@
         android:layout_marginTop="16dp"/>
 
     <Button
+        android:id="@+id/buttonSelectPreferences"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Movie Preferences" />
+
+
+    <Button
         android:id="@+id/buttonSaveProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
