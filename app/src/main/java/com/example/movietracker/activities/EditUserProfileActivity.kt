@@ -17,7 +17,7 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.squareup.picasso.Picasso
 
-class UserProfileActivity : AppCompatActivity() {
+class EditUserProfileActivity : AppCompatActivity() {
 
     private lateinit var firestore: FirebaseFirestore
     private lateinit var profileImage: ImageView
@@ -25,17 +25,17 @@ class UserProfileActivity : AppCompatActivity() {
     private lateinit var editUsername: EditText
     private lateinit var editAboutMe: EditText
     private lateinit var buttonSaveProfile: Button
-    private val userId = "user123" // Replace with actual user ID
+    private val userId = "user123" // Replace with actual user ID passed from the DisplayUserProfileActivity
 
     private lateinit var buttonUploadProfilePic: Button
     private lateinit var storageReference: StorageReference
-    private var profilePicUrl: String = ""
+    private var profilePicUrl: String = ""  // Variable to hold the uploaded image URI
 
     private val PICK_IMAGE_REQUEST = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_user_profile)
+        setContentView(R.layout.activity_edit_user_profile)
 
         firestore = FirebaseFirestore.getInstance()
 
@@ -86,24 +86,16 @@ class UserProfileActivity : AppCompatActivity() {
                     editUsername.setText(it.username)
                     editAboutMe.setText(it.aboutMe)
                     profilePicUrl = it.profilePicUrl // Retrieve the profile picture URL
-
-                    // Check if profilePicUrl is not empty
-                    if (profilePicUrl.isNotEmpty()) {
-                        // Load the profile picture into ImageView using Picasso
-                        Picasso.get().load(profilePicUrl).into(profileImage)
-                    } else {
-                        // Optional: Set a placeholder image if the URL is empty
-                        profileImage.setImageResource(R.drawable.placeholder_image) // Use your own placeholder image
-                    }
+                    // Load the profile picture into ImageView using Picasso
+                    Picasso.get().load(profilePicUrl).into(profileImage)
                 }
             } else {
-                Log.d("UserProfileActivity", "No such document")
+                Log.d("EditUserProfileActivity", "No such document")
             }
         }.addOnFailureListener { e ->
-            Log.e("UserProfileActivity", "Error loading user profile: ${e.message}", e)
+            Log.e("EditUserProfileActivity", "Error loading user profile: ${e.message}", e)
         }
     }
-
 
     private fun saveUserProfile() {
         val userProfile = UserProfile(
@@ -119,11 +111,17 @@ class UserProfileActivity : AppCompatActivity() {
         userProfileRef.set(userProfile)
             .addOnSuccessListener {
                 Toast.makeText(this, "Profile updated successfully", Toast.LENGTH_SHORT).show()
-                Log.d("UserProfileActivity", "User profile updated: ${userProfile.username}")
+                Log.d("EditUserProfileActivity", "User profile updated: ${userProfile.username}")
+
+                // Redirect to DisplayUserProfileActivity after saving
+                val intent = Intent(this, DisplayUserProfileActivity::class.java)
+                intent.putExtra("USER_ID", userId) // Pass the user ID to display activity
+                startActivity(intent)
+                finish() // Optional: close the current activity
             }
             .addOnFailureListener { e ->
                 Toast.makeText(this, "Failed to update profile", Toast.LENGTH_SHORT).show()
-                Log.e("UserProfileActivity", "Error updating profile: ${e.message}", e)
+                Log.e("EditUserProfileActivity", "Error updating profile: ${e.message}", e)
             }
     }
 

@@ -8,8 +8,9 @@ import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.movietracker.activities.DisplayUserProfileActivity
 import com.example.movietracker.activities.MovieDetailActivity
-import com.example.movietracker.activities.UserProfileActivity
+import com.example.movietracker.activities.EditUserProfileActivity
 import com.example.movietracker.activities.WatchListActivity
 import com.example.movietracker.adapters.MovieAdapter
 import com.example.movietracker.network.RetrofitInstance
@@ -41,7 +42,7 @@ class HomeActivity : AppCompatActivity() {
         // Inside HomeActivity.kt
         val userProfileButton: ImageButton = findViewById(R.id.buttonUserProfile)
         userProfileButton.setOnClickListener {
-            val intent = Intent(this, UserProfileActivity::class.java)
+            val intent = Intent(this, DisplayUserProfileActivity::class.java)
             startActivity(intent)
         }
 
