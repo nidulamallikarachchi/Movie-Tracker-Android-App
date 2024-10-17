@@ -4,10 +4,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movietracker.activities.MovieDetailActivity
+import com.example.movietracker.activities.UserProfileActivity
 import com.example.movietracker.activities.WatchListActivity
 import com.example.movietracker.adapters.MovieAdapter
 import com.example.movietracker.network.RetrofitInstance
@@ -35,6 +37,14 @@ class HomeActivity : AppCompatActivity() {
             val intent = Intent(this, WatchListActivity::class.java)
             startActivity(intent)
         }
+
+        // Inside HomeActivity.kt
+        val userProfileButton: ImageButton = findViewById(R.id.buttonUserProfile)
+        userProfileButton.setOnClickListener {
+            val intent = Intent(this, UserProfileActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 
     private fun fetchPopularMovies() {
