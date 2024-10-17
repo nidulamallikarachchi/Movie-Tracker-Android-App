@@ -7,6 +7,7 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.movietracker.activities.MovieDetailActivity
 import com.example.movietracker.activities.WatchListActivity
 import com.example.movietracker.adapters.MovieAdapter
 import com.example.movietracker.network.RetrofitInstance
@@ -45,7 +46,9 @@ class HomeActivity : AppCompatActivity() {
 
                     withContext(Dispatchers.Main) {
                         movieAdapter = MovieAdapter(movies) { movie ->
-                            // Handle movie click event
+                            val intent = Intent(this@HomeActivity, MovieDetailActivity::class.java)
+                            intent.putExtra("movie", movie)  // Pass the Movie object
+                            startActivity(intent)
                         }
                         movieRecyclerView.adapter = movieAdapter
                     }
@@ -56,6 +59,8 @@ class HomeActivity : AppCompatActivity() {
                 Log.e("HomeActivity", "Exception: ${e.message}")
             }
         }
+
+
     }
 
 //    Explanation:
