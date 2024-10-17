@@ -5,12 +5,19 @@
     android:padding="16dp">
 
     <ImageView
-        android:id="@+id/profileImage"
+        android:id="@+id/imageViewProfile"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_gravity="center"
-        android:contentDescription="@string/profile_image"
-        android:src="@drawable/ic_user_profile" />
+        android:scaleType="centerCrop"
+        android:contentDescription="Profile Picture" />
+
+    <Button
+        android:id="@+id/buttonUploadProfilePic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Upload Profile Picture"
+        android:layout_gravity="center" />
 
     <EditText
         android:id="@+id/editFirstName"
