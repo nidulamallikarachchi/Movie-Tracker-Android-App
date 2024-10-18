@@ -15,6 +15,14 @@
         android:layout_gravity="start"
         android:layout_margin="16dp"/>
 
+    <!-- Spinner for Genre Selection -->
+    <Spinner
+        android:id="@+id/genreSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_gravity="center" />
+
     <!-- RecyclerView for Movies -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/movieRecyclerView"
@@ -31,5 +39,4 @@
         android:text="Go to Watchlist"
         android:layout_gravity="end"
         android:layout_margin="16dp"/>
-
 </LinearLayout>
