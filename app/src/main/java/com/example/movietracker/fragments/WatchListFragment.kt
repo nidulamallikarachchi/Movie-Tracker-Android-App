@@ -41,12 +41,6 @@ class WatchListFragment : Fragment() {
         // Load the watchlist data
         loadWatchlist()
 
-        val watchedMoviesButton: Button = view.findViewById(R.id.watchedMoviesButton)
-        watchedMoviesButton.setOnClickListener {
-            val intent = Intent(requireContext(), WatchedMoviesActivity::class.java)
-            startActivity(intent)
-        }
-
         return view
     }
 

@@ -53,12 +53,6 @@ class HomeFragment : Fragment() {
             startActivity(Intent(requireContext(), WatchListActivity::class.java))
         }
 
-        val userProfileButton: ImageButton = view.findViewById(R.id.buttonUserProfile)
-        userProfileButton.setOnClickListener {
-            // Navigate to DisplayUserProfileActivity
-            startActivity(Intent(requireContext(), DisplayUserProfileActivity::class.java))
-        }
-
         return view
     }
 

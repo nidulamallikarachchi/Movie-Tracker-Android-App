@@ -45,12 +45,6 @@ class HomeActivity : AppCompatActivity() {
             val intent = Intent(this, WatchListActivity::class.java)
             startActivity(intent)
         }
-
-        val userProfileButton: ImageButton = findViewById(R.id.buttonUserProfile)
-        userProfileButton.setOnClickListener {
-            val intent = Intent(this, DisplayUserProfileActivity::class.java)
-            startActivity(intent)
-        }
     }
 
     private fun fetchGenres() {

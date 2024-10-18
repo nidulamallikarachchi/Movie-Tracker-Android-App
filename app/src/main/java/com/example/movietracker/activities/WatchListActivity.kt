@@ -34,11 +34,6 @@ class WatchListActivity : AppCompatActivity() {
         // Load the watchlist data
         loadWatchlist()
 
-        val watchedMoviesButton: Button = findViewById(R.id.watchedMoviesButton)
-        watchedMoviesButton.setOnClickListener {
-            val intent = Intent(this, WatchedMoviesActivity::class.java)
-            startActivity(intent)
-        }
 
     }
 

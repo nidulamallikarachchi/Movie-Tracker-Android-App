@@ -4,16 +4,18 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <!-- User Profile Button -->
-    <ImageButton
-        android:id="@+id/buttonUserProfile"
+    <TextView
+        android:id="@+id/headingText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_user_profile"
-        android:contentDescription="@string/user_profile"
-        android:background="?attr/selectableItemBackground"
-        android:layout_gravity="start"
-        android:layout_margin="16dp"/>
+        android:text="Explore"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:gravity="center"
+        android:layout_gravity="left"
+        android:padding="16dp"
+        android:layout_marginTop="10dp" />
 
     <!-- Spinner for Genre Selection -->
     <Spinner
