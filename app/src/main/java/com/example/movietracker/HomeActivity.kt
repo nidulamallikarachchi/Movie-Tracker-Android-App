@@ -40,11 +40,6 @@ class HomeActivity : AppCompatActivity() {
 
         fetchGenres()
 
-        val watchlistButton: Button = findViewById(R.id.watchlistButton)
-        watchlistButton.setOnClickListener {
-            val intent = Intent(this, WatchListActivity::class.java)
-            startActivity(intent)
-        }
     }
 
     private fun fetchGenres() {

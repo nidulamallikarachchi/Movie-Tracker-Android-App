@@ -16,8 +16,7 @@
         android:textColor="#000000"
         android:gravity="left"
         android:padding="16dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginTop="10dp" />
 
     <!-- RecyclerView to display the watched movies -->
     <androidx.recyclerview.widget.RecyclerView

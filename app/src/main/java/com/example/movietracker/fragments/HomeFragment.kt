@@ -46,12 +46,6 @@ class HomeFragment : Fragment() {
 
         fetchGenres()
 
-        val watchlistButton: Button = view.findViewById(R.id.watchlistButton)
-        watchlistButton.setOnClickListener {
-            // Navigate to WatchListActivity
-            // You might want to change this to use a Fragment as well
-            startActivity(Intent(requireContext(), WatchListActivity::class.java))
-        }
 
         return view
     }

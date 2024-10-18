@@ -5,12 +5,14 @@
     android:orientation="horizontal"
     android:padding="8dp">
 
+    <!-- Movie Poster -->
     <ImageView
         android:id="@+id/moviePoster"
-        android:layout_width="100dp"
-        android:layout_height="150dp"
+        android:layout_width="80dp"
+        android:layout_height="120dp"
         android:scaleType="centerCrop" />
 
+    <!-- Movie Details -->
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -18,32 +20,52 @@
         android:orientation="vertical"
         android:paddingStart="16dp">
 
+        <!-- Movie Title -->
         <TextView
             android:id="@+id/movieTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:textColor="@android:color/black" />
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="Movie Title" />
 
+        <!-- Release Date -->
         <TextView
             android:id="@+id/movieReleaseDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="12sp"
-            android:textColor="@android:color/darker_gray" />
+            android:textColor="@android:color/darker_gray"
+            android:text="Release Date" />
 
+        <!-- Rating Bar -->
         <RatingBar
             android:id="@+id/movieRatingBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:numStars="5"
-            android:stepSize="0.5"
-            android:rating="0" />
+            android:stepSize="1"
+            android:rating="0"
+            android:scaleX="0.4"
+            android:scaleY="0.4"
+            android:layout_gravity="start"
+            />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/removeFromWatchedButton"
+    <!-- Buttons -->
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Remove" />
+        android:orientation="vertical">
+
+        <!-- Mark as Watched Button -->
+        <Button
+            android:id="@+id/removeFromWatchedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Remove" />
+    </LinearLayout>
+
 </LinearLayout>
