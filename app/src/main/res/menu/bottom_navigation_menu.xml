@@ -1,0 +1,19 @@
+<!-- res/menu/bottom_navigation_menu.xml -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_home"
+        android:title="Home"
+        android:icon="@drawable/ic_home" /> <!-- Replace with your icon -->
+    <item
+        android:id="@+id/nav_watched"
+        android:title="Watched"
+        android:icon="@drawable/ic_watched" /> <!-- Replace with your icon -->
+    <item
+        android:id="@+id/nav_watchlist"
+        android:title="Watchlist"
+        android:icon="@drawable/ic_watchlist" /> <!-- Replace with your icon -->
+    <item
+        android:id="@+id/nav_profile"
+        android:title="Profile"
+        android:icon="@drawable/ic_profile" /> <!-- Replace with your icon -->
+</menu>
