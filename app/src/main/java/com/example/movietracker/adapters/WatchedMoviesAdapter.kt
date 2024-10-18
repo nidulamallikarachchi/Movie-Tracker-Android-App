@@ -9,6 +9,7 @@ import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.example.movietracker.R
 import com.example.movietracker.models.Movie
 
@@ -39,6 +40,7 @@ class WatchedMoviesAdapter(
         val posterUrl = "https://image.tmdb.org/t/p/w500${movie.poster_path}"
         Glide.with(holder.itemView.context)
             .load(posterUrl)
+            .apply(com.bumptech.glide.request.RequestOptions().transform(RoundedCorners(20)))
             .into(holder.moviePoster)
 
         holder.removeFromWatchedButton.setOnClickListener {
