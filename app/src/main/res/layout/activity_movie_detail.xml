@@ -1,93 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- Movie Title -->
-    <TextView
-        android:id="@+id/movieTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Movie Title"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="16dp" />
-
-    <!-- Movie Poster -->
-    <ImageView
-        android:id="@+id/moviePoster"
-        android:layout_width="200dp"
-        android:layout_height="300dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="16dp"
-        android:contentDescription="Movie Poster" />
-
-    <!-- Movie Release Date -->
-    <TextView
-        android:id="@+id/movieReleaseDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Release Date: YYYY-MM-DD"
-        android:textSize="16sp"
-        android:layout_marginBottom="8dp" />
-
-    <!-- Movie Rating -->
-    <TextView
-        android:id="@+id/movieRating"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Rating: 0.0/10"
-        android:textSize="16sp"
-        android:layout_marginBottom="8dp" />
-
-    <!-- Movie Overview -->
-    <TextView
-        android:id="@+id/movieOverview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Movie Overview"
-        android:textSize="14sp"
-        android:layout_marginBottom="16dp" />
-
-    <!-- LinearLayout to contain the two buttons -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="16dp">
+        android:orientation="vertical">
 
-        <!-- Add to Watchlist Button -->
-        <Button
-            android:id="@+id/addToWatchlistButton"
-            android:layout_width="0dp"
+        <!-- Movie Title -->
+        <TextView
+            android:id="@+id/movieTitle"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Add to Watchlist"
-            android:textColor="#FFFFFF"
-            android:layout_marginEnd="8dp" />
+            android:text="Movie Title"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="16dp" />
 
-        <!-- Add to Watched Movies Button -->
-        <Button
-            android:id="@+id/addToWatchedButton"
-            android:layout_width="0dp"
+        <!-- Movie Poster -->
+        <ImageView
+            android:id="@+id/moviePoster"
+            android:layout_width="200dp"
+            android:layout_height="300dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="16dp"
+            android:contentDescription="Movie Poster" />
+
+        <!-- Movie Release Date -->
+        <TextView
+            android:id="@+id/movieReleaseDate"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Add to Watched Movies"
-            android:textColor="#FFFFFF"
-            android:layout_marginStart="8dp" />
+            android:text="Release Date: YYYY-MM-DD"
+            android:textSize="16sp"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Movie Rating -->
+        <TextView
+            android:id="@+id/movieRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rating: 0.0/10"
+            android:textSize="16sp"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Movie Overview -->
+        <TextView
+            android:id="@+id/movieOverview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Movie Overview"
+            android:textSize="14sp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- LinearLayout to contain the two buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp">
+
+            <!-- Add to Watchlist Button -->
+            <Button
+                android:id="@+id/addToWatchlistButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Add to Watchlist"
+                android:textColor="#FFFFFF"
+                android:layout_marginEnd="8dp" />
+
+            <!-- Add to Watched Movies Button -->
+            <Button
+                android:id="@+id/addToWatchedButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Add to Watched Movies"
+                android:textColor="#FFFFFF"
+                android:layout_marginStart="8dp" />
+
+        </LinearLayout>
+
+        <!-- Cast RecyclerView with Grid Layout -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/castRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp" />
 
     </LinearLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/castRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scrollbars="vertical"
-        android:padding="16dp" />
-
-
-
-</LinearLayout>
+</ScrollView>

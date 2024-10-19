@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.movietracker.R
@@ -47,9 +47,11 @@ class MovieDetailActivity : AppCompatActivity() {
         }
 
         castRecyclerView = findViewById(R.id.castRecyclerView)
-        castAdapter = CastMemberAdapter(castList)
 
-        castRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        // Set up GridLayoutManager to display 3 cast members per row
+        castRecyclerView.layoutManager = GridLayoutManager(this, 3)
+
+        castAdapter = CastMemberAdapter(castList)
         castRecyclerView.adapter = castAdapter
     }
 
@@ -182,5 +184,4 @@ class MovieDetailActivity : AppCompatActivity() {
             }
         }
     }
-
 }
