@@ -7,10 +7,19 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.movietracker.R
+import com.example.movietracker.adapters.CastMemberAdapter
+import com.example.movietracker.models.CastMember
 import com.example.movietracker.models.Movie
+import com.example.movietracker.network.RetrofitInstance
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class MovieDetailActivity : AppCompatActivity() {
 
@@ -18,6 +27,10 @@ class MovieDetailActivity : AppCompatActivity() {
     private lateinit var addToWatchlistButton: Button
     private lateinit var addToWatchedButton: Button
     private val userId = "user123" // Replace with actual user ID after implementing authentication
+
+    private lateinit var castRecyclerView: RecyclerView
+    private lateinit var castAdapter: CastMemberAdapter
+    private val castList = mutableListOf<CastMember>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +43,14 @@ class MovieDetailActivity : AppCompatActivity() {
         if (movie != null) {
             displayMovieDetails(movie)
             setupButtons(movie)
+            fetchCastMembers(movie.id)
         }
+
+        castRecyclerView = findViewById(R.id.castRecyclerView)
+        castAdapter = CastMemberAdapter(castList)
+
+        castRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        castRecyclerView.adapter = castAdapter
     }
 
     private fun displayMovieDetails(movie: Movie) {
@@ -139,4 +159,28 @@ class MovieDetailActivity : AppCompatActivity() {
             Log.e("MovieDetail", "Error fetching watched movie document: ${e.message}", e)
         }
     }
+
+    private fun fetchCastMembers(movieId: Int) {
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                val response = RetrofitInstance.api.getMovieCredits(movieId, "6b198ede282a11fc260cf5e13162cb0b")
+                if (response.isSuccessful) {
+                    val castResponse = response.body()?.cast ?: emptyList()
+                    withContext(Dispatchers.Main) {
+                        castList.clear()
+                        castList.addAll(castResponse.map {
+                            CastMember(
+                                name = it.name,
+                                profilePath = "https://image.tmdb.org/t/p/w500${it.profilePath ?: ""}"
+                            )
+                        })
+                        castAdapter.notifyDataSetChanged()
+                    }
+                }
+            } catch (e: Exception) {
+                Log.e("MovieDetailActivity", "Error fetching cast members: ${e.message}")
+            }
+        }
+    }
+
 }

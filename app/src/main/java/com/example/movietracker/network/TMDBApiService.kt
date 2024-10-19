@@ -1,9 +1,11 @@
 package com.example.movietracker.network
 
+import com.example.movietracker.models.CreditsResponse
 import com.example.movietracker.models.MovieResponse
 import com.example.movietracker.models.GenreResponse
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface TMDBApiService {
@@ -23,6 +25,13 @@ interface TMDBApiService {
         @Query("api_key") apiKey: String,
         @Query("with_genres") genreId: Int
     ): Response<MovieResponse>
+
+    @GET("movie/{movie_id}/credits")
+    suspend fun getMovieCredits(
+        @Path("movie_id") movieId: Int,
+        @Query("api_key") apiKey: String
+    ): Response<CreditsResponse>
+
 }
 
 //    @GET("movie/popular"): This specifies that we’re making a GET request to the /movie/popular endpoint to fetch popular movies.
