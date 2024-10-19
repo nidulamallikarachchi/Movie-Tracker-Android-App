@@ -48,6 +48,14 @@ class MainActivity : AppCompatActivity() {
     private fun loadFragment(fragment: Fragment) {
         // Replace the current fragment with the new one
         val transaction = supportFragmentManager.beginTransaction()
+
+        transaction.setCustomAnimations(
+            R.anim.fade_in,   // Enter animation
+            R.anim.fade_out,  // Exit animation
+            R.anim.fade_in,   // Pop enter animation (when you go back)
+            R.anim.fade_out   // Pop exit animation (when you go back)
+        )
+
         transaction.replace(R.id.fragment_container, fragment) // Use your container ID
         transaction.commit()
     }
