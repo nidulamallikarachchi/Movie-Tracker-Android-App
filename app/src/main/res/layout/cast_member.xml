@@ -22,6 +22,5 @@
         android:layout_height="wrap_content"
         android:textSize="14sp"
         android:gravity="center"
-        android:paddingTop="4dp"
-        android:textColor="@android:color/black"/>
+        android:paddingTop="4dp" />
 </LinearLayout>
