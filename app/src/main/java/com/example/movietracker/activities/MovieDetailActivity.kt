@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.example.movietracker.R
 import com.example.movietracker.adapters.CastMemberAdapter
 import com.example.movietracker.models.CastMember
@@ -70,7 +71,9 @@ class MovieDetailActivity : AppCompatActivity() {
         val posterUrl = "https://image.tmdb.org/t/p/w500${movie.poster_path}"
         Glide.with(this)
             .load(posterUrl)
+            .apply(com.bumptech.glide.request.RequestOptions().transform(RoundedCorners(20)))
             .into(moviePoster)
+
     }
 
     private fun setupButtons(movie: Movie) {

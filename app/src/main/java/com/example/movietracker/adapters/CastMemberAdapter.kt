@@ -6,9 +6,10 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
+import coil.transform.RoundedCornersTransformation
 import com.example.movietracker.R
 import com.example.movietracker.models.CastMember
-import com.squareup.picasso.Picasso
 
 class CastMemberAdapter(private val castList: List<CastMember>) :
     RecyclerView.Adapter<CastMemberAdapter.CastViewHolder>() {
@@ -21,7 +22,11 @@ class CastMemberAdapter(private val castList: List<CastMember>) :
     override fun onBindViewHolder(holder: CastViewHolder, position: Int) {
         val castMember = castList[position]
         holder.castMemberName.text = castMember.name
-        Picasso.get().load(castMember.profilePath).into(holder.castMemberImage)
+
+        // Load image with Coil and apply rounded corners
+        holder.castMemberImage.load(castMember.profilePath) {
+            transformations(RoundedCornersTransformation(30f)) // Set the corner radius
+        }
     }
 
     override fun getItemCount(): Int = castList.size
@@ -30,6 +35,4 @@ class CastMemberAdapter(private val castList: List<CastMember>) :
         val castMemberImage: ImageView = itemView.findViewById(R.id.castMemberImage)
         val castMemberName: TextView = itemView.findViewById(R.id.castMemberName)
     }
-
-
 }

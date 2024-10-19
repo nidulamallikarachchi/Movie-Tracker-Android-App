@@ -47,6 +47,7 @@ dependencies {
     implementation(libs.firebase.analytics)
     implementation(libs.firebase.storage.ktx)
     implementation(libs.common)
+    implementation(libs.androidx.core)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -57,4 +58,5 @@ dependencies {
     implementation(libs.retrofit.converter.gson)
     implementation(libs.glide)
     implementation(libs.picasso)
+    implementation(libs.coil)
 }

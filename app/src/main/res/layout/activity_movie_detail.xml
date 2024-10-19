@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:fillViewport="true"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="16dp">
 
         <!-- Movie Title -->
         <TextView
@@ -15,9 +18,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Movie Title"
-            android:textSize="24sp"
+            android:textSize="28sp"
             android:textStyle="bold"
-            android:layout_gravity="center_horizontal"
+            android:layout_gravity="left"
             android:layout_marginBottom="16dp" />
 
         <!-- Movie Poster -->
@@ -28,6 +31,54 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="16dp"
             android:contentDescription="Movie Poster" />
+
+        <!-- LinearLayout to contain the two buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp">
+
+            <!-- Add to Watchlist Button -->
+            <Button
+                android:id="@+id/addToWatchlistButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Add to Watchlist"
+                android:textColor="#FFFFFF"
+                android:layout_marginEnd="8dp" />
+
+            <!-- Add to Watched Movies Button -->
+            <Button
+                android:id="@+id/addToWatchedButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Already Watched"
+                android:textColor="#FFFFFF"
+                android:layout_marginStart="8dp" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Description"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_gravity="left"
+            android:layout_marginBottom="5dp" />
+
+
+        <!-- Movie Overview -->
+        <TextView
+            android:id="@+id/movieOverview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Movie Overview"
+            android:textSize="14sp"
+            android:layout_marginBottom="16dp" />
 
         <!-- Movie Release Date -->
         <TextView
@@ -47,50 +98,23 @@
             android:textSize="16sp"
             android:layout_marginBottom="8dp" />
 
-        <!-- Movie Overview -->
         <TextView
-            android:id="@+id/movieOverview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Movie Overview"
-            android:textSize="14sp"
-            android:layout_marginBottom="16dp" />
+            android:text="Cast Members"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_gravity="left"
+            android:layout_marginBottom="5dp" />
 
-        <!-- LinearLayout to contain the two buttons -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="16dp">
-
-            <!-- Add to Watchlist Button -->
-            <Button
-                android:id="@+id/addToWatchlistButton"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Add to Watchlist"
-                android:textColor="#FFFFFF"
-                android:layout_marginEnd="8dp" />
-
-            <!-- Add to Watched Movies Button -->
-            <Button
-                android:id="@+id/addToWatchedButton"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Add to Watched Movies"
-                android:textColor="#FFFFFF"
-                android:layout_marginStart="8dp" />
-
-        </LinearLayout>
-
-        <!-- Cast RecyclerView with Grid Layout -->
+        <!-- Cast Members Grid RecyclerView -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/castRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:scrollbars="none"
             android:padding="16dp" />
 
     </LinearLayout>
-</ScrollView>
+
+</androidx.core.widget.NestedScrollView>

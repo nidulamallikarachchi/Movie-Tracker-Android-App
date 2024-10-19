@@ -21,6 +21,10 @@ playServicesAuth = "21.2.0"
 firebaseStorage = "31.2.0"
 firebaseStorageKtx = "21.0.1"
 common = "0.10.0"
+core = "1.13.1"
+picasso = "2.71828"
+picassoTransformations = "2.8.0"
+coil = "2.3.0"
 
 
 [libraries]
@@ -37,9 +41,9 @@ firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version
 firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore", version.ref = "firebaseFirestore" }
 play-services-auth = { group = "com.google.android.gms", name = "play-services-auth", version.ref = "playServicesAuth" }
 firebase-storage = { group = "com.google.firebase", name = "firebase-storage", version.ref = "firebaseStorage" }
-picasso = { module = "com.squareup.picasso:picasso", version = "2.71828" }
-
-
+picasso = { module = "com.squareup.picasso:picasso", version.ref = "picasso" }
+picasso-transformations = { module = "jp.wasabeef.picasso.transformations:picasso-transformations", version.ref = "picassoTransformations" }
+coil = { module = "io.coil-kt:coil", version.ref = "coil"}
 #Custom Dependencies
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 retrofit-converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
@@ -47,6 +51,7 @@ glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 glide-compiler = { module = "com.github.bumptech.glide:compiler", version.ref = "glide" }
 firebase-storage-ktx = { group = "com.google.firebase", name = "firebase-storage-ktx", version.ref = "firebaseStorageKtx" }
 common = { group = "com.google.ai.client.generativeai", name = "common", version.ref = "common" }
+androidx-core = { group = "androidx.core", name = "core", version.ref = "core" }
 
 
 [plugins]
