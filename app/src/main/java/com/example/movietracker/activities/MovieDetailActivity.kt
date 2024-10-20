@@ -3,6 +3,7 @@ package com.example.movietracker.activities
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
@@ -26,8 +27,8 @@ import kotlinx.coroutines.withContext
 class MovieDetailActivity : AppCompatActivity() {
 
     private lateinit var firestore: FirebaseFirestore
-    private lateinit var addToWatchlistButton: Button
-    private lateinit var addToWatchedButton: Button
+    private lateinit var addToWatchlistButton: ImageButton
+    private lateinit var addToWatchedButton: ImageButton
     private val userId = "user123" // Replace with actual user ID after implementing authentication
 
 
