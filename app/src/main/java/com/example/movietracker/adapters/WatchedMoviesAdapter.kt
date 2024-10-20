@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.RatingBar
@@ -26,7 +27,7 @@ class WatchedMoviesAdapter(
         val movieTitle: TextView = itemView.findViewById(R.id.movieTitle)
         val movieReleaseDate: TextView = itemView.findViewById(R.id.movieReleaseDate)
         val movieRatingBar: ProgressBar = itemView.findViewById(R.id.movieRatingBar)
-        val removeFromWatchedButton: Button = itemView.findViewById(R.id.removeFromWatchedButton)
+        val removeFromWatchedButton: ImageButton = itemView.findViewById(R.id.removeFromWatchedButton)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WatchedMoviesViewHolder {
