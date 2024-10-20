@@ -144,11 +144,7 @@ class EditUserProfileActivity : AppCompatActivity() {
                 Toast.makeText(this, "Profile updated successfully", Toast.LENGTH_SHORT).show()
                 Log.d("EditUserProfileActivity", "User profile updated: ${userProfile.username}")
 
-                // Redirect to DisplayUserProfileActivity after saving
-                val intent = Intent(this, DisplayUserProfileActivity::class.java)
-                intent.putExtra("USER_ID", userId) // Pass the user ID to display activity
-                startActivity(intent)
-                finish() // Optional: close the current activity
+                finish()
             }
             .addOnFailureListener { e ->
                 Toast.makeText(this, "Failed to update profile", Toast.LENGTH_SHORT).show()
