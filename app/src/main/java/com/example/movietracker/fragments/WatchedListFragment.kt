@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.airbnb.lottie.LottieAnimationView
 import com.example.movietracker.R
 import com.example.movietracker.adapters.WatchedMoviesAdapter
 import com.example.movietracker.models.Movie
@@ -19,6 +20,7 @@ class WatchedListFragment : Fragment() {
     private lateinit var watchedMoviesAdapter: WatchedMoviesAdapter
     private val firestore = FirebaseFirestore.getInstance()
     private val watchedMovies = mutableListOf<Movie>()
+    private lateinit var lottieAnimationView: LottieAnimationView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,6 +31,8 @@ class WatchedListFragment : Fragment() {
 
         watchedMoviesRecyclerView = view.findViewById(R.id.watchedMoviesRecyclerView)
         watchedMoviesRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+
+        lottieAnimationView = view.findViewById(R.id.lottieAnimationView)
 
         loadWatchedMovies()
 
@@ -54,14 +58,24 @@ class WatchedListFragment : Fragment() {
 
     private fun removeFromWatchedMovies(movie: Movie) {
         val userId = "user123"  // Replace with the actual logged-in user ID
+
+        lottieAnimationView.visibility = View.VISIBLE
+        lottieAnimationView.setAnimation(R.raw.delete_animation) // This references the raw resource
+        lottieAnimationView.setSpeed(1f)
+        lottieAnimationView.playAnimation()
+
         firestore.collection("watchedMovies").document(userId).collection("movies").document(movie.id.toString())
             .delete()
             .addOnSuccessListener {
                 watchedMovies.remove(movie)
                 watchedMoviesAdapter.notifyDataSetChanged()
+
+                lottieAnimationView.visibility = View.GONE
             }
             .addOnFailureListener { e ->
                 Log.w("WatchedMoviesFragment", "Error removing movie from watched list", e)
+                lottieAnimationView.visibility = View.GONE
             }
     }
+
 }

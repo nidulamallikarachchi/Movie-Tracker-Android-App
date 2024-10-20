@@ -17,6 +17,16 @@
         android:padding="16dp"
         android:layout_marginTop="10dp" />
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottieAnimationView"
+        android:layout_gravity="center"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:visibility="gone"
+        app:lottie_autoPlay="false"
+        app:lottie_loop="false"/>
+
+
     <!-- RecyclerView to display the watched movies -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/watchedMoviesRecyclerView"

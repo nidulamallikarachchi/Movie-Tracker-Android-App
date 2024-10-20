@@ -59,4 +59,5 @@ dependencies {
     implementation(libs.glide)
     implementation(libs.picasso)
     implementation(libs.coil)
+    implementation(libs.lottie)
 }
