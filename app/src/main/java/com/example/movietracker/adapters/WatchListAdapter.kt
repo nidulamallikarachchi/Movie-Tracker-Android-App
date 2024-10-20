@@ -10,6 +10,8 @@ import android.widget.ProgressBar
 import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
+import coil.transform.RoundedCornersTransformation
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.example.movietracker.R
@@ -55,10 +57,14 @@ class WatchListAdapter(
 
         // Load the movie poster using Glide (ensure the poster path is correct)
         val posterUrl = "https://image.tmdb.org/t/p/w500${movie.poster_path ?: ""}"
-        Glide.with(holder.itemView.context)
-            .load(posterUrl)
-            .apply(com.bumptech.glide.request.RequestOptions().transform(RoundedCorners(20)))
-            .into(holder.moviePoster)
+//        Glide.with(holder.itemView.context)
+//            .load(posterUrl)
+//            .apply(com.bumptech.glide.request.RequestOptions().transform(RoundedCorners(20)))
+//            .into(holder.moviePoster)
+
+        holder.moviePoster.load(posterUrl) {
+            transformations(RoundedCornersTransformation(20f)) // Set the corner radius
+        }
 
         // Set click listeners for buttons
         holder.markWatchedButton.setOnClickListener { markAsWatched(movie) }
