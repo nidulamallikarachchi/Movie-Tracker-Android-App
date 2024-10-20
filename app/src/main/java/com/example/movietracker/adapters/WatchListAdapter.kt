@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.RatingBar
@@ -28,8 +29,8 @@ class WatchListAdapter(
         val movieTitle: TextView = itemView.findViewById(R.id.movieTitle)
         val movieReleaseDate: TextView = itemView.findViewById(R.id.movieReleaseDate)
         val movieRatingBar: ProgressBar = itemView.findViewById(R.id.movieRatingBar)
-        val markWatchedButton: Button = itemView.findViewById(R.id.markWatchedButton)
-        val removeFromWatchlistButton: Button = itemView.findViewById(R.id.removeFromWatchlistButton)
+        val markWatchedButton: ImageButton = itemView.findViewById(R.id.markWatchedButton)
+        val removeFromWatchlistButton: ImageButton = itemView.findViewById(R.id.removeFromWatchlistButton)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WatchListViewHolder {
