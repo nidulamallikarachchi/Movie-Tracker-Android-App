@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -22,7 +23,7 @@ class WatchedMoviesAdapter(
         val moviePoster: ImageView = itemView.findViewById(R.id.moviePoster)
         val movieTitle: TextView = itemView.findViewById(R.id.movieTitle)
         val movieReleaseDate: TextView = itemView.findViewById(R.id.movieReleaseDate)
-        val movieRatingBar: RatingBar = itemView.findViewById(R.id.movieRatingBar)
+        val movieRatingBar: ProgressBar = itemView.findViewById(R.id.movieRatingBar)
         val removeFromWatchedButton: Button = itemView.findViewById(R.id.removeFromWatchedButton)
     }
 
@@ -35,7 +36,10 @@ class WatchedMoviesAdapter(
         val movie = movies[position]
         holder.movieTitle.text = movie.title
         holder.movieReleaseDate.text = movie.release_date
-        holder.movieRatingBar.rating = movie.vote_average / 2
+
+        val ratingOutOf10 = movie.vote_average
+        val progressPercentage = (ratingOutOf10 * 10).toInt()
+        holder.movieRatingBar.progress = progressPercentage
 
         val posterUrl = "https://image.tmdb.org/t/p/w500${movie.poster_path}"
         Glide.with(holder.itemView.context)

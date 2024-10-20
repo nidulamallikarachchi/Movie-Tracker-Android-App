@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -28,6 +29,7 @@ class MovieDetailActivity : AppCompatActivity() {
     private lateinit var addToWatchlistButton: Button
     private lateinit var addToWatchedButton: Button
     private val userId = "user123" // Replace with actual user ID after implementing authentication
+
 
     private lateinit var castRecyclerView: RecyclerView
     private lateinit var castAdapter: CastMemberAdapter
@@ -60,12 +62,17 @@ class MovieDetailActivity : AppCompatActivity() {
         val movieTitle: TextView = findViewById(R.id.movieTitle)
         val moviePoster: ImageView = findViewById(R.id.moviePoster)
         val movieReleaseDate: TextView = findViewById(R.id.movieReleaseDate)
-        val movieRating: TextView = findViewById(R.id.movieRating)
+        val movieRatingBar: ProgressBar = findViewById(R.id.movieRatingBar)
         val movieOverview: TextView = findViewById(R.id.movieOverview)
 
         movieTitle.text = movie.title
         movieReleaseDate.text = "Release Date: ${movie.release_date}"
-        movieRating.text = "Rating: ${movie.vote_average}/10"
+
+        val ratingOutOf10 = movie.vote_average
+        val progressPercentage = (ratingOutOf10 * 10).toInt()
+
+        movieRatingBar.progress = progressPercentage
+
         movieOverview.text = movie.overview
 
         val posterUrl = "https://image.tmdb.org/t/p/w500${movie.poster_path}"

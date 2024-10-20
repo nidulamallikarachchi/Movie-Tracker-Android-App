@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -24,7 +25,7 @@ class WatchListAdapter(
         val moviePoster: ImageView = itemView.findViewById(R.id.moviePoster)
         val movieTitle: TextView = itemView.findViewById(R.id.movieTitle)
         val movieReleaseDate: TextView = itemView.findViewById(R.id.movieReleaseDate)
-        val movieRatingBar: RatingBar = itemView.findViewById(R.id.movieRatingBar)
+        val movieRatingBar: ProgressBar = itemView.findViewById(R.id.movieRatingBar)
         val markWatchedButton: Button = itemView.findViewById(R.id.markWatchedButton)
         val removeFromWatchlistButton: Button = itemView.findViewById(R.id.removeFromWatchlistButton)
     }
@@ -45,7 +46,10 @@ class WatchListAdapter(
         // Binding movie title, release date, and rating
         holder.movieTitle.text = movie.title ?: "No Title"
         holder.movieReleaseDate.text = movie.release_date ?: "Unknown"
-        holder.movieRatingBar.rating = movie.vote_average / 2
+
+        val ratingOutOf10 = movie.vote_average
+        val progressPercentage = (ratingOutOf10 * 10).toInt()
+        holder.movieRatingBar.progress = progressPercentage
 
         Log.d("WatchListAdapter", "Binding movie: ${movie.title}")
 
