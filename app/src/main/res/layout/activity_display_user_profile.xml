@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="16dp"> <!-- Set background color -->
 
     <TextView
         android:id="@+id/headingText"
@@ -12,49 +13,89 @@
         android:textSize="28sp"
         android:textStyle="bold"
         android:gravity="center"
-        android:layout_gravity="left"
-        android:padding="16dp"
+        android:layout_gravity="center"
+        android:padding="8dp"
+
         android:layout_marginTop="10dp" />
 
-    <!-- Display User Profile Fields -->
     <ImageView
         android:id="@+id/imageViewProfile"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:layout_gravity="center"
         android:scaleType="centerCrop"
-        android:contentDescription="Profile Picture" />
+        android:contentDescription="Profile Picture"
+        android:background="@drawable/circular_background"
+        android:padding="8dp" /> <!-- Padding around the image -->
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome"
+        android:fontFamily="@font/bold"
+        android:textSize="30sp"
+        android:layout_marginTop="20dp"
+        />
     <TextView
         android:id="@+id/textFirstName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="First Name"
-        android:textSize="18sp"
-        android:layout_marginTop="16dp"/>
+        android:textSize="24sp"
+        android:layout_marginLeft="30dp"
+        /> <!-- Set text color -->
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Username: "
+            />
+        <TextView
+            android:id="@+id/textUsername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Username"
+            android:layout_marginTop="10dp"
+            />
+
+    </LinearLayout>
 
     <TextView
-        android:id="@+id/textUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Username"
-        android:textSize="18sp"
-        android:layout_marginTop="8dp"/>
-
+        android:text="About Me"
+        android:fontFamily="@font/bold"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp"
+        />
     <TextView
         android:id="@+id/textAboutMe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="About Me"
-        android:textSize="18sp"
-        android:layout_marginTop="8dp"/>
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Favourite Genres"
+        android:textSize="20dp"
+        android:fontFamily="@font/bold"
+        android:layout_marginTop="10dp"
+
+        />
 
     <TextView
         android:id="@+id/textMoviePreferences"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Movie Preferences" />
-
+        android:text="Movie Preferences"
+        /> <!-- Set text color -->
 
     <!-- Button to Edit Profile -->
     <Button
@@ -63,6 +104,8 @@
         android:layout_height="wrap_content"
         android:text="Edit Profile"
         android:layout_gravity="center"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/colorAccent"
+        android:textColor="@android:color/white" />
 
 </LinearLayout>

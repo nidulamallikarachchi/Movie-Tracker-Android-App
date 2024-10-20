@@ -15,6 +15,9 @@ import com.example.movietracker.activities.EditUserProfileActivity
 import com.example.movietracker.models.UserProfile
 import com.google.firebase.firestore.FirebaseFirestore
 import com.squareup.picasso.Picasso
+import coil.load
+import coil.transform.CircleCropTransformation
+import coil.transform.RoundedCornersTransformation
 
 class DisplayUserProfileFragment : Fragment() {
 
@@ -68,7 +71,11 @@ class DisplayUserProfileFragment : Fragment() {
                     textAboutMe.text = it.aboutMe
                     // Load the profile picture into ImageView using Picasso
                     if (it.profilePicUrl.isNotEmpty()) {
-                        Picasso.get().load(it.profilePicUrl).into(profileImage)
+                        profileImage.load(it.profilePicUrl) {
+                            transformations(CircleCropTransformation()) // Apply circular crop
+                            placeholder(R.drawable.placeholder_image) // Placeholder image
+                            error(R.drawable.placeholder_image) // Error image
+                        }
                     } else {
                         profileImage.setImageResource(R.drawable.placeholder_image) // Set a placeholder image
                     }

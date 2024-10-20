@@ -27,6 +27,7 @@ class EditUserProfileActivity : AppCompatActivity() {
     private lateinit var editAboutMe: EditText
     private lateinit var buttonSaveProfile: Button
     private lateinit var buttonSelectPreferences: Button
+    private lateinit var buttonUploadProfilePic: Button
     private val userId = "user123" // Replace with actual user ID passed from the DisplayUserProfileActivity
 
     private lateinit var storageReference: StorageReference
@@ -47,6 +48,7 @@ class EditUserProfileActivity : AppCompatActivity() {
         editAboutMe = findViewById(R.id.editAboutMe)
         buttonSaveProfile = findViewById(R.id.buttonSaveProfile)
         buttonSelectPreferences = findViewById(R.id.buttonSelectPreferences)
+        buttonUploadProfilePic = findViewById(R.id.buttonUploadProfilePic)
 
         profileImage = findViewById(R.id.imageViewProfile)
         storageReference = FirebaseStorage.getInstance().reference.child("profilePictures")
@@ -61,6 +63,13 @@ class EditUserProfileActivity : AppCompatActivity() {
         // Save button click listener
         buttonSaveProfile.setOnClickListener {
             saveUserProfile()
+        }
+
+        profileImage.setOnClickListener {
+            openGallery() // Open gallery when the profile image is clicked
+        }
+        buttonUploadProfilePic.setOnClickListener{
+            openGallery()
         }
     }
 
