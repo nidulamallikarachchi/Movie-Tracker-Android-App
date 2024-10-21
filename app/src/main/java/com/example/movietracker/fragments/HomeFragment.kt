@@ -9,16 +9,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.ImageButton
 import android.widget.Spinner
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movietracker.R
-import com.example.movietracker.activities.DisplayUserProfileActivity
 import com.example.movietracker.activities.MovieDetailActivity
-import com.example.movietracker.activities.WatchListActivity
 import com.example.movietracker.adapters.MovieAdapter
 import com.example.movietracker.network.RetrofitInstance
 import kotlinx.coroutines.CoroutineScope

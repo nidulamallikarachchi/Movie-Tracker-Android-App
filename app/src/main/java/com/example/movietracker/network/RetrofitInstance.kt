@@ -12,5 +12,4 @@ object RetrofitInstance {
             .build()
             .create(TMDBApiService::class.java)
     }
-
 }
