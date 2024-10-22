@@ -115,12 +115,7 @@ picasso = { module = "com.squareup.picasso:picasso", version.ref = "picasso" }
 
 ## 👤 Author
 
-- **Cereal** - Developer of Movie Tracker.
+- **Nidula Mallikarachchi** - Developer of Movie Tracker.
 
 Feel free to contribute by forking the repository and submitting pull requests.
 
----
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
