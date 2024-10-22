@@ -2,6 +2,9 @@
 
 Movie Tracker is an Android app built with Kotlin that allows users to easily track movies they have watched and want to watch. The app features user profiles, customizable movie preferences, and dynamic watchlists. It integrates with Firebase for data storage and uses smooth animations to enhance the user experience.
 
+# ⏯️ Demonstration of the App
+[Watch on YouTube](https://youtu.be/qIxn7cEpqHA)
+
 ---
 
 ## 📱 Features
